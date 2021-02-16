@@ -15,12 +15,20 @@ module.exports = {
    */
 
   module: {
-    rules:[{
-      test: /\.js?$/,
-      exclude:/(node_modules)/, //略过哪些 文件
-      loader: "babel-loader" //针对es6语法处理
-    }]
+    rules: [
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      }
+    ]
   },
+
 
   /**
    * 配置插件

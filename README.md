@@ -21,9 +21,22 @@
 ````
 
 13、安装解析es6插件
-npm install babel-core babel-loader babel-polyfill babel-preset-es2015 babel-preset-latest --save-dev
+npm install  babel-loader @babel/core @babel/preset-env --save-dev
+npm install --save @babel/plugin-transform-runtime
+npm install --save @babel/plugin-proposal-class-properties
+
+
 14、创建 .babelrc 文件
+````javascript
+  { 
+  "presets": ["@babel/preset-env"],
+	"plugins": ["@babel/plugin-transform-runtime","@babel/plugin-proposal-class-properties"]
+}
+````
+
 15、更改 webpack.dev.config.js
+
+Cannot find module '@babel/core'  版本问题
 
 项目配置完成
 
@@ -32,3 +45,37 @@ npm install babel-core babel-loader babel-polyfill babel-preset-es2015 babel-pre
 2、封装，数据的权限和保密
 3、多态、统一接口的不同实现
 
+###### 继承 
+````javascript
+  class Person {
+    constructor(name, age) {
+      this.name = name
+      this.age = age
+    }
+
+    eat(fan) {
+      console.log( `${this.name}喜欢吃${fan}饭`  )
+    }
+  }
+
+  class Children extends Person{
+    constructor(name, age ,number) {
+      super(name, age) 
+      this.number = number
+    }
+
+    study() {
+      console.log(`儿子会学习，老子不会`)
+    }
+  }
+
+  const P1 = new Person('王先森', 32)
+  const C1 = new Children('王线森儿子', 12, 3 )
+  console.log('P1', P1)
+  console.log('P1', P1.eat('猪蹄饭'))
+  console.log('C1', C1)
+  console.log('C1', C1.eat("黄瓜"))
+  console.log('C1', C1.study())
+
+  // 继承可将公共方法抽离出来，提高复用性，较少冗余
+````
