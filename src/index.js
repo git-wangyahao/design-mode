@@ -1,48 +1,22 @@
-class jQuery {
-  // 构造器
-  constructor (seletor) {
-    let slice = Array.prototype.slice
-    let dom = slice.call(document.querySelectorAll(seletor))
-    // 获取dom 的长度
-    let len = dom ? dom.length : 0
-    for (let i = 0; i < len ; i++ ) {
-      this[i] = dom[i]
+/**
+ * 单例模式登陆框 
+ */
+
+ class LoginInform {
+   constructor () {
+     this.state = 'hide' //定义状态
+   }
+
+   show() {
+    if(this.state === 'show') {
+      alert('已经显示')
+      return
     }
-    this.length = len
-    this.seletor = seletor || ''
-  }
+    this.state = 'show'
+    console.log('登陆框显示成功')
+   }
 
-  append( node ) {
+   hide() {
 
-  }
-
-  addClass (name) {
-
-  }
-
-  html(data) {
-
-  }
-
-}
-
-window.$ = function (seletor) {
-  return new jQuery(seletor)
-} 
-
-
-var $p = $('p')
-console.log($p)
-
-
-
-
-
-
-
-
-
-
-
-
-
+   }
+ }
